@@ -21,7 +21,23 @@ export const getOrderById = async (req: Request, res: Response, next: NextFuncti
 };
 
 export const createOrder = async (req: Request, res: Response, next: NextFunction) => {
+  console.log('Order API req.body:', JSON.stringify(req.body, null, 2));
   try {
+    // Validate products array and product field
+    if (!Array.isArray(req.body.products) || req.body.products.length === 0) {
+      return res.status(400).json({ message: 'products array is required and cannot be empty.' });
+    }
+    for (const [i, item] of req.body.products.entries()) {
+      if (!item.product || typeof item.product !== 'string' || item.product.length < 10) {
+        return res.status(400).json({ message: `products[${i}].product is required and must be a valid product ObjectId.` });
+      }
+    }
+    req.body.products = req.body.products.map((item: any) => {
+      if (item.product && typeof item.product === 'object' && item.product._id) {
+        return { ...item, product: item.product._id };
+      }
+      return item;
+    });
     const order = new Order(req.body);
     await order.save();
     res.status(201).json(order);

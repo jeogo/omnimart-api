@@ -1,4 +1,11 @@
-# dependencies
+MongooseError: Operation `products.find()` buffering timed out after 10000ms
+GET /api/products?includeDiscounts=true&includeCategories=true 500 10033.501 ms - 403
+MongooseError: Operation `categories.find()` buffering timed out after 10000ms
+GET /api/categories 500 10022.662 ms - 407
+MongooseError: Operation `discounts.find()` buffering timed out after 10000ms
+GET /api/discounts 500 10015.142 ms - 405
+MongooseError: Operation `products.findOne()` buffering timed out after 10000ms
+GET /api/products/6808b9f31920dbbf9e42324f?includeDiscount=true&includeCategory=true 500 10022.557 ms - 409# dependencies
 /node_modules
 /.pnp
 .pnp.js
