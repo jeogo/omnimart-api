@@ -7,7 +7,7 @@ export interface IOrder extends Document {
   wilaya: string;
   products: Array<{
     productId: string;
-    productName: string;
+    productName: string;  
     price: number;
     quantity: number;
     size?: string;
