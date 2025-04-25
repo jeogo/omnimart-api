@@ -12,9 +12,6 @@ import productRoutes from './routes/productRoutes';
 import orderRoutes from './routes/orderRoutes';
 import categoryRoutes from './routes/categoryRoutes';
 import discountRoutes from './routes/discountRoutes';
-import userRoutes from './routes/userRoutes';
-import statisticsRoutes from './routes/statisticsRoutes';
-import storeSettingsRoutes from './routes/storeSettingsRoutes';
 import errorHandler from './middlewares/errorHandler';
 
 dotenv.config();
@@ -53,9 +50,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/discounts', discountRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/statistics', statisticsRoutes);
-app.use('/api/store-settings', storeSettingsRoutes);
 
 // Health check
 app.get('/', (_req, res) => {
