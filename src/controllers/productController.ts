@@ -3,7 +3,7 @@ import Product from '../models/product';
 
 export const getProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const products = await Product.find().populate('category').populate('discount');
+    const products = await Product.find().populate('category');
     res.json(products);
   } catch (err) {
     next(err);
@@ -12,7 +12,7 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
 
 export const getProductById = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const product = await Product.findById(req.params.id).populate('category').populate('discount');
+    const product = await Product.findById(req.params.id).populate('category');
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
   } catch (err) {
